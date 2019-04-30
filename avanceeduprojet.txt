@@ -1,0 +1,8 @@
+29/04/2019
+AL et Sarah : creation de la bdd sur php myadmin
+Al creation de la requête verification login / mdp (de manière générale quelque soit la bdd) 
+Creation de la requête trier par catégorie
+Requête best seller 
+
+Clement : front web creation de la banner menu , creation de la barre de recherche etc… 
+
