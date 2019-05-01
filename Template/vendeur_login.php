@@ -107,6 +107,9 @@
                 
               </div>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Connexion</button>
+
+               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Créer un compte</button>
+
               
             </form>
           </div>
