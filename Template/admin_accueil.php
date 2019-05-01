@@ -2,6 +2,18 @@
 <html lang="en">
 
 <head>
+  <?php
+    session_start();
+
+
+//identifier le nom de base de données
+$database = "Projet";
+//connectez-vous dans votre BDD
+//Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
+$db_handle = mysqli_connect('localhost', 'root', 'root' );
+$db_found = mysqli_select_db($db_handle, $database);
+//si le BDD existe, faire le traitement
+?>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +37,7 @@
   <!-- Navigation -->
   <nav class="navbar  navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
-      <a class="navbar-brand amazon1" href="#"> Amazon ECE  
+      <a class="navbar-brand amazon1" href="index.html"> Amazon ECE  
         <img src="Logo_ECE_Paris.png" width="110" height="30"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -54,16 +66,16 @@
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="#">Top ventes<ion-icon name="bookmark"></ion-icon></a>
+            <a class="nav-link" href="topventes.php">Top ventes<ion-icon name="bookmark"></ion-icon></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Vendre<ion-icon name="briefcase"></ion-icon></a>
+            <a class="nav-link" href="vendeur_login.php">Vendre<ion-icon name="briefcase"></ion-icon></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Votre compte<ion-icon name="person"></ion-icon></a>
+            <a class="nav-link" href="acheteur_login.php">Votre compte acheteur<ion-icon name="person"></ion-icon></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Panier<ion-icon name="cart"></ion-icon></a>
+            <a class="nav-link" href="panier.php">Panier<ion-icon name="cart"></ion-icon></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="admin_login.php">Admin<ion-icon name="school"></ion-icon></a>

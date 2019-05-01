@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <?php
     session_start();
 
@@ -37,7 +38,7 @@ $db_found = mysqli_select_db($db_handle, $database);
   <!-- Navigation -->
   <nav class="navbar  navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
-      <a class="navbar-brand amazon1" href="#"> Amazon ECE  
+      <a class="navbar-brand amazon1" href="index.php"> Amazon ECE  
         <img src="Logo_ECE_Paris.png" width="110" height="30"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -55,7 +56,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
               <a class="dropdown-item" href="Livres.php">Livres <ion-icon name="book"></ion-icon></a>
 
-              <a class="dropdown-item" href="Musique.php">Musique <ion-icon name="volume-high"></ion-icon></a>
+              <a class="dropdown-item" href="Musique.php">Musiques <ion-icon name="volume-high"></ion-icon></a>
 
               <a class="dropdown-item" href="Sports&Loisirs.php">Sports et loisirs <ion-icon name="basketball"></ion-icon></a>
 
@@ -65,7 +66,7 @@ $db_found = mysqli_select_db($db_handle, $database);
           </div> 
           </li>
 
-          <li class="nav-item active">
+             <li class="nav-item active">
             <a class="nav-link" href="topventes.php">Top ventes<ion-icon name="bookmark"></ion-icon></a>
           </li>
           <li class="nav-item active">
@@ -80,7 +81,7 @@ $db_found = mysqli_select_db($db_handle, $database);
           <li class="nav-item active">
             <a class="nav-link" href="admin_login.php">Admin<ion-icon name="school"></ion-icon></a>
           </li>
-
+          
         </ul>
       </div>
     </div>
@@ -98,9 +99,9 @@ $db_found = mysqli_select_db($db_handle, $database);
           <br>
         
           <a href="Livres.php" class="list-group-item">Livres</a>
-          <a href="Musique.php" class="list-group-item active">Musique</a>
+          <a href="Musique.php" class="list-group-item">Musique</a>
           <a href="Sports&Loisirs.php" class="list-group-item">Sports&Loisirs</a>
-          <a href="Vetements.php" class="list-group-item">Vêtements</a>
+          <a href="Vetements.php" class="list-group-item active">Vêtements</a>
         </div>
 
       </div>
@@ -118,7 +119,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 
 <?php
-$cat= 2;
+$cat= 4;
 //identifier le nom de base de données
 $database = "Projet";
 //connectez-vous dans votre BDD
@@ -170,11 +171,8 @@ mysqli_close($db_handle);
         <div class="row">
 
    
-
-
-
 <?php
-$cat= 2;
+$cat=4;
 //identifier le nom de base de données
 $database = "Projet";
 //connectez-vous dans votre BDD
@@ -190,16 +188,20 @@ if ($db_found) {
 
     while ($data = mysqli_fetch_assoc($result)){ ?>
 
-  <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src=<?php echo $data[Photo] ?> alt=""></a>
+              <a href="#"> <img class="card-img-top" src=<?php echo $data[Photo] ?> alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#"><?php echo $data[Nom] ?></a>
+                <form action="ArticleVetement.php" method="post">
+                  <td> <input type="hidden" name="IDArticlechoisi" value= <?php echo $data[ID] ?>> </td>
+                  <button class="btn btn-primary" type="submit"><?php echo $data[Nom] ?></button>
+                </form>
                 </h4>
+
+
                 <h5><?php echo $data[Prix] . €?></h5>
                 <p class="card-text"><?php echo $data[Description] ?></p>
-                <button class="btn btn-primary" type="submit">Ajouter au Panier</button>
               </div>
               
             </div>

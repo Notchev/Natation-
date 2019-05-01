@@ -4,6 +4,18 @@
 <html lang="en">
 
 <head>
+  <?php
+    session_start();
+
+
+//identifier le nom de base de données
+$database = "Projet";
+//connectez-vous dans votre BDD
+//Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
+$db_handle = mysqli_connect('localhost', 'root', 'root' );
+$db_found = mysqli_select_db($db_handle, $database);
+//si le BDD existe, faire le traitement
+?>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +39,7 @@
   <!-- Navigation -->
   <nav class="navbar  navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
-      <a class="navbar-brand amazon1" href="#"> Amazon ECE  
+      <a class="navbar-brand amazon1" href="index.php"> Amazon ECE  
         <img src="Logo_ECE_Paris.png" width="110" height="30"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -45,27 +57,27 @@
 
               <a class="dropdown-item" href="Livres.php">Livres <ion-icon name="book"></ion-icon></a>
 
-              <a class="dropdown-item" href="#">Musiques <ion-icon name="volume-high"></ion-icon></a>
+              <a class="dropdown-item" href="Musique.php">Musiques <ion-icon name="volume-high"></ion-icon></a>
 
-              <a class="dropdown-item" href="#">Sports et loisirs <ion-icon name="basketball"></ion-icon></a>
+              <a class="dropdown-item" href="Sports&loisirs.php">Sports et loisirs <ion-icon name="basketball"></ion-icon></a>
 
-              <a class="dropdown-item" href="#">Vetements <ion-icon name="woman"></ion-icon></ion-icon></a>
+              <a class="dropdown-item" href="Vetements.php">Vetements <ion-icon name="woman"></ion-icon></ion-icon></a>
 
             </div>
           </div> 
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="#">Top ventes<ion-icon name="bookmark"></ion-icon></a>
+            <a class="nav-link" href="topventes.php">Top ventes<ion-icon name="bookmark"></ion-icon></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="vendeur_login.php">Vendre<ion-icon name="briefcase"></ion-icon></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Votre compte<ion-icon name="person"></ion-icon></a>
+            <a class="nav-link" href="acheteur_login.php">Votre compte<ion-icon name="person"></ion-icon></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Panier<ion-icon name="cart"></ion-icon></a>
+            <a class="nav-link" href="panier.php">Panier<ion-icon name="cart"></ion-icon></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="admin_login.php">Admin<ion-icon name="school"></ion-icon></a>
@@ -158,10 +170,10 @@ if ($db_found) {
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src=<?php echo $data[Photo] ?> alt=""></a>
+              <img class="card-img-top" src=<?php echo $data[Photo] ?> alt=""> 
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#"><?php echo $data[Nom] ?></a>
+                  <?php echo $data[Nom] ?>
                 </h4>
                 <form action="ArticleVetement.php" method="post">
                   <table>
@@ -185,7 +197,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 if ($db_found) {
 
-    $sql = "SELECT * FROM ArticleVetement WHERE IDType = $IDArticlechoisi GROUP BY Taille";
+    $sql = "SELECT * FROM ArticleVetement WHERE IDType = $IDArticlechoisi  GROUP BY Taille";
     $result = mysqli_query($db_handle, $sql);
 
   

@@ -1,20 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <?php
-    session_start();
-
-
-//identifier le nom de base de données
-$database = "Projet"; 
-//connectez-vous dans votre BDD
-//Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
-$db_handle = mysqli_connect('localhost', 'root', 'root' );
-$db_found = mysqli_select_db($db_handle, $database);
-//si le BDD existe, faire le traitement
-?>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,9 +43,9 @@ $db_found = mysqli_select_db($db_handle, $database);
 
               <a class="dropdown-item" href="Livres.php">Livres <ion-icon name="book"></ion-icon></a>
 
-              <a class="dropdown-item" href="Musique.php">Musique <ion-icon name="volume-high"></ion-icon></a>
+              <a class="dropdown-item" href="Musique.php">Musiques <ion-icon name="volume-high"></ion-icon></a>
 
-              <a class="dropdown-item" href="Sports&loisirs.php">Sports et loisirs <ion-icon name="basketball"></ion-icon></a>
+              <a class="dropdown-item" href="Sports&Loisirs.php">Sports et loisirs <ion-icon name="basketball"></ion-icon></a>
 
               <a class="dropdown-item" href="Vetements.php">Vetements <ion-icon name="woman"></ion-icon></ion-icon></a>
 
@@ -79,7 +66,7 @@ $db_found = mysqli_select_db($db_handle, $database);
             <a class="nav-link" href="panier.php">Panier<ion-icon name="cart"></ion-icon></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="admin_login.php">Admin<ion-icon name="school"></ion-icon></a>
+            <a class="nav-link" href="admin.php">Admin<ion-icon name="school"></ion-icon></a>
           </li>
 
         </ul>
@@ -88,45 +75,95 @@ $db_found = mysqli_select_db($db_handle, $database);
   </nav>
 
 
+   
+  <br>
+    
+    <!-- Page Content -->
+<div class="container">
 
-<body>
+      <!-- Page Heading -->
+      <center>
+      <h1 class="my-4">Panier</h1>
+      <hr color ="black">
+      </center>
 
-  <div class="container">
+  <br>
+  <br>
+<!-- Project One -->
 
     <div class="row">
-      <div class="col-sm-11 col-md-9 col-lg-7 mx-auto">
-        <div class="card card-signin my-5">
-          <div class="card-body">
 
-            <h6 class="card-title text-center">Se connecter</h6>
+        <div class="col-md-7">
+            <center>
 
-
-            <form class="form-signin" action = "FormConnexion.php" method="post" >
-              <div class="form-label-group">
-                <input type="text" name="Login" class="form-control" placeholder="Login" required autofocus>
-
-
-              </div>
-
-              <div class="form-label-group">
-                <label for="inputPassword"> </label>
-
-                <input type="password" name="Mdp" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-              </div>
-
-              <input type="hidden" name="user" value= "Admin"> 
-
-
-              <div class="custom-control custom-checkbox mb-7">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                
-              </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Connexion</button>
-              
-            </form>
-          </div>
+          <a href="#"><img class="img-fluid rounded mb-7 mb-md-0" src="http://placehold.it/700x300" alt="">
+          </a>
+        </center>
         </div>
+
+    <div class="col-md-5">
+          <h4> Article 1 </h4>
+           <div align="justify">
+            <p> Description </p>
+          </div>
+      <div align="right">
+          <select name= "choixquantite" value= "Sélectionner la quantite"> </select>
+          <option value = "selectionner">Quantite</option> 
       </div>
+
+        </div>
+
     </div>
-  </div>
+</div>
+<hr>
+<!-- Project Two -->
+<div class="container">
+
+<br>
+<br>
+  
+        <div class="row">
+
+        <div class="col-md-7">
+            <center>
+
+          <a href="#"><img class="img-fluid rounded mb-7 mb-md-0" src="http://placehold.it/700x300" alt="">
+          </a>
+        </center>
+        </div>
+
+    <div class="col-md-5">
+          <h4> Article 2 </h4>
+           <div align="justify">
+            <p> Description </p>
+          </div>
+      <div align="right">
+          <select name= "choixquantite" value= "Sélectionner la quantite"> </select>
+          <option value = "selectionner">Quantite</option> 
+      </div>
+
+        </div>
+
+    </div>
+
+</div>
+<hr color = "black">
+
+      <div class="container">
+         <div class="row">
+            <div>
+         
+          <h3>Sous-Total</h3>
+                   
+   <div align = right>
+          <button class="btn btn-secondary float-right" type="submit" >Passer commande</button>
+          </div>
+        
+            </div>
+          </div>
+      </div>
+
 </body>
+
+      <!-- /.row -->
+</html>
