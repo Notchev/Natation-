@@ -80,6 +80,13 @@ $db_found = mysqli_select_db($db_handle, $database);
           <li class="nav-item active">
             <a class="nav-link" href="admin_login.php">Admin<ion-icon name="school"></ion-icon></a>
           </li>
+          <li class="nav-item active">
+            <img src = <?php  echo $Photo= $_SESSION ['Photo']; ?> height="50" width ="50" >
+            <h7>  <?php  echo $Prenom= $_SESSION ['Prenom']; ?> </h7>
+
+     
+  
+    
 
         </ul>
       </div>
