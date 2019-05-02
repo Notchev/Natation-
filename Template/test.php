@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,6 +136,8 @@ $db_found = mysqli_select_db($db_handle, $database);
             <span class="sr-only">Next</span>
           </a>
     
+      
+
         </div>
 
         <div class="row">
@@ -146,46 +146,123 @@ $db_found = mysqli_select_db($db_handle, $database);
 <?php
  //declaration des variables
  $IDArticlechoisi = isset ($_POST["IDArticlechoisi"])? $_POST["IDArticlechoisi"] : ""; //if-then-else (si vrai : $nom = $_POST["nom"] si faux : "") 
- $erreur = "";
+ $Genre = isset ($_POST["Genre"])? $_POST["Genre"] : "";
 
 if ($db_found) {
 
-    $sql = "SELECT * FROM Type WHERE ID = $IDArticlechoisi";
-
+    $sql = "SELECT * FROM ArticleVetement WHERE IDType = $IDArticlechoisi GROUP BY Couleur";
     $result = mysqli_query($db_handle, $sql);
- 	
+
   
     while ($data = mysqli_fetch_assoc($result)){
-
 
 
  ?>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <img class="card-img-top" src=<?php echo $data[Photo] ?> alt=""> 
+              <a href="#"> <img class="card-img-top" src=<?php echo $data[Photo] ?> alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <?php echo $data[Nom] ?>
+                <form action="ArticleVetement.php" method="post">
+                 
+                  <button class="btn btn-primary" type="submit"><?php echo $data[Nom] ?></button>
+                </form>
                 </h4>
-                <form action="ArticleVetement2.php" method="post">
-                  <table>
-                  
 
-           	 <td> <input type="hidden" name="IDArticlechoisi" value= <?php echo $data[ID] ?>> </td>
 
-              <tr>
-                <td> 
-                  <input type= "radio" name= "Genre" value="Homme" /> Homme 
-                 <input type= "radio" name= "Genre" value="Femme" /> Femme 
+                <h5><?php echo $data[Prix] . €?></h5>
+                <p class="card-text"><?php echo $data[Description] ?></p>
+              </div>
+              
+            </div>
+          </div>
+
+<?php
+ //declaration des variables
+
+$erreur = "";
+$database = "Projet";
+//connectez-vous dans votre BDD
+//Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
+$db_handle = mysqli_connect('localhost', 'root', 'root' );
+$db_found = mysqli_select_db($db_handle, $database);
+//si le BDD existe, faire le traitement
+//on peut changer le nom de la table ici
+
+if ($db_found) {
+
+    $sql = "SELECT * FROM ArticleVetement WHERE IDType = $IDArticlechoisi  GROUP BY Taille";
+    $result = mysqli_query($db_handle, $sql);
+
+  
+    while ($data = mysqli_fetch_assoc($result)){ ?>
+                <option value =  <?php $data['Taille'] ?> >  <?php echo $data['Taille'] ?> </option>
+              
+
+
+ <?php   }
+    }
+//end if
+//si le BDD n'existe pas
+else {
+    echo "Database not found";
+}//end else
+//fermer la connection
+mysqli_close($db_handle);
+       ?>
+        
+
+                  </select>
+                  </td>
+                </tr>
+
+                  <tr>
+                    <td>
+                <select name= "choixcouleur" value= "Sélectionner votre année scolaire">
+                <option value = "selectionner"> Sélectionner une couleur </option> 
+
+<?php
+ //declaration des variables
+
+$erreur = "";
+$database = "Projet";
+//connectez-vous dans votre BDD
+//Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
+$db_handle = mysqli_connect('localhost', 'root', 'root' );
+$db_found = mysqli_select_db($db_handle, $database);
+//si le BDD existe, faire le traitement
+//on peut changer le nom de la table ici
+
+if ($db_found) {
+
+    $sql = "SELECT * FROM ArticleVetement WHERE IDType = $IDArticlechoisi GROUP BY Couleur";
+    $result = mysqli_query($db_handle, $sql);
+
+  
+    while ($data = mysqli_fetch_assoc($result)){ ?>
+                <option value =  <?php $data['Couleur'] ?> >  <?php echo $data['Couleur'] ?> </option>
+              
+
+
+ <?php   }
+    }
+//end if
+//si le BDD n'existe pas
+else {
+    echo "Database not found";
+}//end else
+//fermer la connection
+mysqli_close($db_handle);
+       ?>
+
+                  </select>
                 </td>
               </tr>
 
-              <tr>
-                  <td>
-                  <button class="btn btn-primary" type="submit"> Suivant</button>
-                </td>
-              </tr>
+              
+
+              
             </table>
                 </form>
                 
