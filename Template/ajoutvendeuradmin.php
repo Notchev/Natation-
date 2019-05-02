@@ -2,19 +2,15 @@
 <html lang="en">
 
 <head>
-<?php 
 
+  <?php 
 session_start();
-
-//identifier le nom de base de données
 $database = "Projet";
 //connectez-vous dans votre BDD
 //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
 $db_handle = mysqli_connect('localhost', 'root', 'root' );
 $db_found = mysqli_select_db($db_handle, $database);
-//si le BDD existe, faire le traitement
-if ($db_found) {
-  ?>
+?>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -54,7 +50,7 @@ if ($db_found) {
 
               </button>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
               <a class="dropdown-item" href="Livres.php">Livres <ion-icon name="book"></ion-icon></a>
 
@@ -83,8 +79,15 @@ if ($db_found) {
           <li class="nav-item active">
             <a class="nav-link" href="admin_login.php">Admin<ion-icon name="school"></ion-icon></a>
           </li>
+          <img src="profil.png" width="30" height="30">
+
+
+
+
+
 
         </ul>
+        
       </div>
     </div>
   </nav>
@@ -95,122 +98,157 @@ if ($db_found) {
 
 
 
+              <?php
+if ($db_found) 
+{
 
-        <?php 
-        $id = $_SESSION['ID'];
-    $sql = "SELECT * FROM Vendeur WHERE ID= $id";
-    $result = mysqli_query($db_handle, $sql);
-      while ($data = mysqli_fetch_assoc($result)){
-   ?>
 
+  
+  $id= $_SESSION ['ID'];
+
+
+
+    $sql = "SELECT * FROM Admin WHERE ID = $id";
+
+
+ $result = mysqli_query($db_handle, $sql);
+
+      
+        while ($data = mysqli_fetch_assoc($result)){
+        
+    //end while
+
+?>
               <div class="col-md-12">
                 <center>
                   <br><br><br>
-                 <img src=<?php echo $data['Photo'] ?> name="aboutme" width="200" height="200" class="arrondie">
+                 <img src= <?php echo $data[Photo] ?> name="aboutme" width="200" height="200" class="arrondie">
                   
 
-                  <div class="couleur text-center"><?php echo $data['Nom'] ?></div>
+                  <div class="couleur text-center"> <?php echo $data['Prenom'] ?> <ion-icon name="checkmark-circle-outline"></ion-icon></div>
                 </center>
               </div>
- <?php   }
-    }
-//end if
-//si le BDD n'existe pas
-else {
-    echo "Database not found";
-}//end else
+
+      <?php   }
+        }
+
+ else {
+        echo "Database not found";
+    }//end else
+    //fermer la connection
+    mysqli_close($db_handle);
+           ?>
 
 
-       ?>
-           
+
+
 
                     <div class="col-lg-12">
 
         <br><br><br>
         <div class="list-group center-block">
-          <a href="interfacevendeurs.php" class="list-group-item couleur1 text-center active">Mon compte</a>
-          <a href="ajoutarticle.php" class="list-group-item couleur1 text-center">Ajouter</a>
-
+           <a href="Interfaceadmin.php" class="list-group-item couleur1 text-center">Mon compte</a>
+          <a href="Listevendeurs.php" class="list-group-item couleur1 text-center">Liste des vendeurs</a>
+          <a href="Listearticles.php" class="list-group-item couleur1 text-center">Liste des articles</a>
+          <a href="ajoutvendeuradmin.php" class="list-group-item couleur1 text-center active">Ajouter un vendeur</a>
+          <a href="ajoutarticleadmin.php" class="list-group-item couleur1 text-center">Ajouter un article</a>
         </div>
 
 
       </div>
 
-
       <div class="col-lg-12">
 
         <br><br><br>
-         <div class="row">
 
- <?php 
-    $sql = "SELECT * FROM TYPE WHERE IDVendeur= $id";
-    $result2 = mysqli_query($db_handle, $sql);
-    if ($db_found) {
-      while ($data2 = mysqli_fetch_assoc($result2)){
-   ?>
-       
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src=<?php echo $data2['Photo']?> alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#"><?php echo $data2['Nom']?></a>
-                </h4>
-                <h5><?php echo $data2['Prix']. € ?></h5>
-                <p class="card-text"><?php echo $data2['Description']?> </p>
-              </div>
-
-              <form action="SupprimerArticle.php" method="post">
-                  <table>
-                  
-
-             <td> <input type="hidden" name="IDArticlechoisi" value= <?php echo $data2[ID] ?>> </td>
-                          <td> <input type="hidden" name="Idinterface" value= "vendeur"> </td>
-
-              <div class="card-footer">
-                <input class="btn btn-danger" type="submit" value="Supprimer">
-              </div>
-            
-            </table>
-                </form>
-
-              
-            </div>
+        <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-img-left d-none d-md-flex">
+             <!-- Background image for card set in CSS! -->
           </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">Ajout d'un vendeur </h5>
+            <form class="form-commander" action="AjouterVendeur.php" method = "post" enctype="multipart/form-data">
+
+              <br>
+      
+<hr>
+ <h6 class="text-center"> Informations personnelles </h6>
+
+              <div class="form-label-group">
+                <input type="text" name="Nom" class="form-control" placeholder="Nom" required autofocus>
+                <label for="Nom"></label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="text" name="Prenom" class="form-control" placeholder="Prenom" required>
+                <label for="Prenom"></label>
+              </div>
+
+               <div class="form-label-group">
+                <input type="mail" name="Email" class="form-control" placeholder="Mail" required>
+                <label for="Email"></label>
+              </div>
+
+ <h6 class="text-center"> Identifiants </h6>
+
+               <div class="form-label-group">
+                <input type="text" name="Login" class="form-control" placeholder="Login" required>
+                <label for="Login"></label>
+              </div>
+              
+               <div class="form-label-group">
+                <input type="mdp" name="Mdp" class="form-control" placeholder="Mdp" required>
+                <label for="Mdp"></label>
+              </div>
+
+              <hr>
+
+        <h6 class="text-center"> Photo de profil </h6>
+       
+              <div class="form-label-group">
+                <input type="file" name="Photo" class="form-control" placeholder="Photo" required>
+                <label for="Photo"></label>
+              </div>
+              <h6 class="text-center"> Photo de couverture </h6>
+
+<div class="form-label-group">
+                <input type="file" name="Fond" class="form-control" placeholder="Fond" required>
+                <label for="Fond"></label>
+              </div>
+             
+
+             <hr color="black">
+
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Valider</button>
+              
+
+            </form>
+          </div>
+        </div>
+      </div>
+   
 
         <!-- /.row -->
 
-     
-
-       <?php   }
-    }
-//end if
-//si le BDD n'existe pas
-else {
-    echo "Database not found";
-}//end else
-//fermer la connection
-mysqli_close($db_handle);
-       ?>
-          
-           </div>
-      <!-- /.col-lg-9 --> 
-
+      </div>
+      <!-- /.col-lg-9 -->
 
     </div>
     <!-- /.row -->
 
   </div>
   <!-- /.container -->
-
+<br><br><br><br><br>
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark">  
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>
     <!-- /.container -->
   </footer>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

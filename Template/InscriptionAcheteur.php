@@ -34,7 +34,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 //si le BDD existe, faire le traitement
 if ($db_found) {
 
-    $sql = "INSERT INTO Acheteur(Nom,Prenom,Adresse1, Adresse2, Ville, CodePostal, Pays, Email, TypeCarte, Numero, DateCarte, Crypto, Login, Mdp) VALUES ('$Nom', '$Prenom','$inputadress','$inputadress2','$inputville',$inputcodepostale,'$inputpays', '$inputEmail', '$inputtypecarte', $inputnumerocarte, $inputdate,$inputcrypto, '$Login', '$inputPassword')";
+    $sql = "INSERT INTO Acheteur(Nom,Prenom,Adresse1, Adresse2, Ville, CodePostal, Pays, Email, TypeCarte, Numero, DateCarte, Crypto, Login, Mdp, NumeroTel) VALUES ('$Nom', '$Prenom','$inputadress','$inputadress2','$inputville',$inputcodepostale,'$inputpays', '$inputEmail', '$inputtypecarte', $inputnumerocarte, '$inputdate' ,$inputcrypto, '$Login', '$inputPassword', $inputel)";
 mysqli_query($db_handle, $sql);
 echo "coucou" . $Prenom . $Nom . $inputadress . $inputadress2 .$inputville.$inputcodepostale . $inputpays . $inputEmail . $inputtypecarte . $inputnumerocarte . $inputdate . $inputcrypto . $Login . $inputPassword;
 

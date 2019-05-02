@@ -2,19 +2,16 @@
 <html lang="en">
 
 <head>
-<?php 
 
+  <?php 
 session_start();
-
-//identifier le nom de base de données
 $database = "Projet";
 //connectez-vous dans votre BDD
 //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
 $db_handle = mysqli_connect('localhost', 'root', 'root' );
 $db_found = mysqli_select_db($db_handle, $database);
-//si le BDD existe, faire le traitement
-if ($db_found) {
-  ?>
+?>
+
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -54,7 +51,7 @@ if ($db_found) {
 
               </button>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
               <a class="dropdown-item" href="Livres.php">Livres <ion-icon name="book"></ion-icon></a>
 
@@ -83,8 +80,15 @@ if ($db_found) {
           <li class="nav-item active">
             <a class="nav-link" href="admin_login.php">Admin<ion-icon name="school"></ion-icon></a>
           </li>
+          <img src="profil.png" width="30" height="30">
+
+
+
+
+
 
         </ul>
+        
       </div>
     </div>
   </nav>
@@ -94,79 +98,115 @@ if ($db_found) {
 
 
 
+<?php
+if ($db_found) 
+{
 
 
-        <?php 
-        $id = $_SESSION['ID'];
-    $sql = "SELECT * FROM Vendeur WHERE ID= $id";
-    $result = mysqli_query($db_handle, $sql);
-      while ($data = mysqli_fetch_assoc($result)){
-   ?>
+  
+  $id= $_SESSION ['ID'];
 
+
+
+    $sql = "SELECT * FROM Admin WHERE ID = $id";
+
+
+ $result = mysqli_query($db_handle, $sql);
+
+      
+        while ($data = mysqli_fetch_assoc($result)){
+        
+    //end while
+
+?>
               <div class="col-md-12">
                 <center>
                   <br><br><br>
-                 <img src=<?php echo $data['Photo'] ?> name="aboutme" width="200" height="200" class="arrondie">
+                 <img src= <?php echo $data[Photo] ?> name="aboutme" width="200" height="200" class="arrondie">
                   
 
-                  <div class="couleur text-center"><?php echo $data['Nom'] ?></div>
+                  <div class="couleur text-center"> <?php echo $data['Prenom'] ?> <ion-icon name="checkmark-circle-outline"></ion-icon></div>
                 </center>
               </div>
- <?php   }
-    }
-//end if
-//si le BDD n'existe pas
-else {
-    echo "Database not found";
-}//end else
+
+      <?php   }
+        }
+
+ else {
+        echo "Database not found";
+    }//end else
+    //fermer la connection
+    mysqli_close($db_handle);
+           ?>
 
 
-       ?>
-           
+
+
 
                     <div class="col-lg-12">
 
         <br><br><br>
         <div class="list-group center-block">
-          <a href="interfacevendeurs.php" class="list-group-item couleur1 text-center active">Mon compte</a>
-          <a href="ajoutarticle.php" class="list-group-item couleur1 text-center">Ajouter</a>
+          <a href="Interfaceadmin.php" class="list-group-item couleur1 text-center">Mon compte</a>
+          <a href="Listevendeurs.php" class="list-group-item couleur1 text-center">Liste des vendeurs</a>
+          <a href="Listearticles.php" class="list-group-item couleur1 text-center active">Liste des articles</a>
+          <a href="ajoutvendeuradmin.php" class="list-group-item couleur1 text-center">Ajouter un vendeur</a>
+          <a href="ajoutarticleadmin.php" class="list-group-item couleur1 text-center">Ajouter un article</a>
 
         </div>
 
 
       </div>
 
-
       <div class="col-lg-12">
 
         <br><br><br>
-         <div class="row">
 
- <?php 
-    $sql = "SELECT * FROM TYPE WHERE IDVendeur= $id";
-    $result2 = mysqli_query($db_handle, $sql);
+        <div class="row">
+
+<?php
+session_start();
+
+
+    //identifier le nom de base de données
+    $database = "Projet";
+    //connectez-vous dans votre BDD
+    //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
+    $db_handle = mysqli_connect('localhost', 'root', 'root' );
+    $db_found = mysqli_select_db($db_handle, $database);
+
+       //declaration des variables
+
+
     if ($db_found) {
-      while ($data2 = mysqli_fetch_assoc($result2)){
-   ?>
-       
 
-          <div class="col-lg-3 col-md-6 mb-4">
+        $sql = "SELECT * FROM Type " ;
+        $result = mysqli_query($db_handle, $sql);
+
+      
+        while ($data = mysqli_fetch_assoc($result)){
+        
+
+
+     ?>
+          <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src=<?php echo $data2['Photo']?> alt=""></a>
+              <br>
+              <a href="#"> <center><img src= <?php echo $data[Photo]  ?> name="aboutme" width="200" height="200" > </center> </a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#"><?php echo $data2['Nom']?></a>
+                  <center><a href="#"><?php echo $data['Nom'] ;?></a> </center>
                 </h4>
-                <h5><?php echo $data2['Prix']. € ?></h5>
-                <p class="card-text"><?php echo $data2['Description']?> </p>
+               <center> <h5><?php echo $data['Prix'] . "€"  ;?></h5> </center>
+               <center> <p class="card-text"><?php echo $data['Description'] ;?></p> </center>
               </div>
 
-              <form action="SupprimerArticle.php" method="post">
+          <form action="SupprimerArticle.php" method="post">
                   <table>
                   
 
-             <td> <input type="hidden" name="IDArticlechoisi" value= <?php echo $data2[ID] ?>> </td>
-                          <td> <input type="hidden" name="Idinterface" value= "vendeur"> </td>
+             <td> <input type="hidden" name="IDArticlechoisi" value= <?php echo $data[ID] ?>> </td>
+              <td> <input type="hidden" name="Idinterface" value= "admin" > </td>
 
               <div class="card-footer">
                 <input class="btn btn-danger" type="submit" value="Supprimer">
@@ -175,42 +215,37 @@ else {
             </table>
                 </form>
 
-              
+            
             </div>
           </div>
+      <?php   }
+        }
 
-        <!-- /.row -->
-
-     
-
-       <?php   }
-    }
-//end if
-//si le BDD n'existe pas
-else {
-    echo "Database not found";
-}//end else
-//fermer la connection
-mysqli_close($db_handle);
-       ?>
-          
-           </div>
-      <!-- /.col-lg-9 --> 
-
+ else {
+        echo "Database not found";
+    }//end else
+    //fermer la connection
+    mysqli_close($db_handle);
+           ?>
+            
+   
+      </div>
+      <!-- /.col-lg-9 -->
 
     </div>
     <!-- /.row -->
 
   </div>
   <!-- /.container -->
-
+<br><br><br><br><br>
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark">  
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>
     <!-- /.container -->
   </footer>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

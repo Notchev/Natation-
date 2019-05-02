@@ -38,7 +38,7 @@ if ($db_found) {
     	}
     	else 
     	{
-    		$erreur = fasle;
+    		$erreur = false;
 
     	}
     }
@@ -60,7 +60,7 @@ mysqli_close($db_handle);
 
     else if($erreur == true && $user == "Admin")
     {   
-    header('Location: http://localhost:8888/Natation-/Natation-/Template/admin_accueil.php'); 
+    header('Location: http://localhost:8888/Natation-/Natation-/Template/Interfaceadmin.php'); 
         
     }
 

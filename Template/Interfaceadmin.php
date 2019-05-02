@@ -2,7 +2,14 @@
 <html lang="en">
 
 <head>
-
+<?php 
+session_start();
+$database = "Projet";
+//connectez-vous dans votre BDD
+//Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
+$db_handle = mysqli_connect('localhost', 'root', 'root' );
+$db_found = mysqli_select_db($db_handle, $database);
+?>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -14,9 +21,11 @@
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="fond.css" type="text/css" media="screen"/>
 
   <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
+
 <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
 </head>
 
@@ -26,7 +35,7 @@
   <nav class="navbar  navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
       <a class="navbar-brand amazon1" href="#"> Amazon ECE  
-        <img src="Logo_ECE_Paris.png" width="90" height="20"></a>
+        <img src="Logo_ECE_Paris.png" width="110" height="30"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,7 +48,7 @@
 
               </button>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
               <a class="dropdown-item" href="Livres.php">Livres <ion-icon name="book"></ion-icon></a>
 
@@ -68,88 +77,107 @@
           <li class="nav-item active">
             <a class="nav-link" href="admin_login.php">Admin<ion-icon name="school"></ion-icon></a>
           </li>
+          <img src="profil.png" width="30" height="30">
+
+
+
+
+
 
         </ul>
+        
       </div>
     </div>
   </nav>
 
+  <!-- Page Content -->
+  <div class="container">
 
-   
-  <br>
-    
-    <!-- Page Content -->
-<div class="container">
 
-      <!-- Page Heading -->
-      <center>
-         <br>
-      <h1>Panier</h1>
-      <hr>
-  <br>
-  <br>
-      </center>
 
-<!-- Project One -->
+<?php
+if ($db_found) 
+{
 
-    <div class="row">
-
-        <div class="col-md-7">
-            <center>
-
-          <a href="#"><img class="img-fluid rounded mb-7 mb-md-0" src="http://placehold.it/700x300" alt="">
-          </a>
-        </center>
-        </div>
-
-    <div class="col-md-5">
-          <h4> Article 1 </h4>
-           <div align="justify">
-            <p> Description </p>
-          </div>
-    
-          <select name= "choixquantite" value= "Sélectionner la quantite"> </select>
-          <option value = "selectionner">Quantite</option> 
-      </div>
-
-        </div>
 
   
+  $id= $_SESSION ['ID'];
 
-<hr>
-<br><br>
-<hr color = "black">
 
-     
-         <div class="row">
-            <div>
-              <br>
-         
-          <h3>Sous-Total</h3>
-                   
-   <div align = right>
-          <button class="btn btn-secondary float-right" type="submit" >Passer commande</button>
-          </div>
+
+    $sql = "SELECT * FROM Admin WHERE ID = $id";
+
+
+ $result = mysqli_query($db_handle, $sql);
+
+      
+        while ($data = mysqli_fetch_assoc($result)){
         
-            </div>
-          </div>
+    //end while
+
+?>
+              <div class="col-md-12">
+                <center>
+                  <br><br><br>
+                 <img src= <?php echo $data[Photo] ?> name="aboutme" width="200" height="200" class="arrondie">
+                  
+
+                  <div class="couleur text-center"> <?php echo $data['Prenom'] ?> <ion-icon name="checkmark-circle-outline"></ion-icon></div>
+                </center>
+              </div>
+
+      <?php   }
+        }
+
+ else {
+        echo "Database not found";
+    }//end else
+    //fermer la connection
+    mysqli_close($db_handle);
+           ?>
+            
+                    <div class="col-lg-12">
+
+        <br><br><br>
+        <div class="list-group center-block">
+          <a href="Interfaceadmin.php" class="list-group-item couleur1 text-center active">Mon compte</a>
+          <a href="Listevendeurs.php" class="list-group-item couleur1 text-center">Liste des vendeurs</a>
+          <a href="Listearticles.php" class="list-group-item couleur1 text-center">Liste des articles</a>
+          <a href="ajoutvendeuradmin.php" class="list-group-item couleur1 text-center">Ajouter un vendeur</a>
+          <a href="ajoutarticleadmin.php" class="list-group-item couleur1 text-center">Ajouter un article</a>
+
+        </div>
+
+
       </div>
 
-      <br><br>
 
- <footer class="py-5 bg-dark">
+   
+
+        <!-- /.row -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+<br><br><br><br><br>
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">  
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>
     <!-- /.container -->
   </footer>
 
+
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
 </body>
 
-      <!-- /.row -->
 </html>

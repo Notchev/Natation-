@@ -128,74 +128,84 @@ else {
 
         <br><br><br>
         <div class="list-group center-block">
-          <a href="interfacevendeurs.php" class="list-group-item couleur1 text-center active">Mon compte</a>
-          <a href="ajoutarticle.php" class="list-group-item couleur1 text-center">Ajouter</a>
+          <a href="interfacevendeurs.php" class="list-group-item couleur1 text-center">Mon compte</a>
+          <a href="ajoutarticle.php" class="list-group-item couleur1 text-center active">Ajouter</a>
 
         </div>
 
 
       </div>
 
+          <center>
 
-      <div class="col-lg-12">
+      <div class="col-lg-9">
 
         <br><br><br>
          <div class="row">
-
- <?php 
-    $sql = "SELECT * FROM TYPE WHERE IDVendeur= $id";
-    $result2 = mysqli_query($db_handle, $sql);
-    if ($db_found) {
-      while ($data2 = mysqli_fetch_assoc($result2)){
-   ?>
-       
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src=<?php echo $data2['Photo']?> alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#"><?php echo $data2['Nom']?></a>
-                </h4>
-                <h5><?php echo $data2['Prix']. € ?></h5>
-                <p class="card-text"><?php echo $data2['Description']?> </p>
-              </div>
-
-              <form action="SupprimerArticle.php" method="post">
-                  <table>
-                  
-
-             <td> <input type="hidden" name="IDArticlechoisi" value= <?php echo $data2[ID] ?>> </td>
-                          <td> <input type="hidden" name="Idinterface" value= "vendeur"> </td>
-
-              <div class="card-footer">
-                <input class="btn btn-danger" type="submit" value="Supprimer">
-              </div>
-            
-            </table>
-                </form>
-
-              
-            </div>
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-img-left d-none d-md-flex">
+             <!-- Background image for card set in CSS! -->
           </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">Ajout d'un article </h5>
+            <form class="form-commander" action="AjouterArticleVendeur.php" method = "post" enctype="multipart/form-data">
 
-        <!-- /.row -->
+              <br>
+              <hr>
+                            <h6 class="text-center"> Catégorie</h6>
 
-     
+                             <select name= "Categorie">
+                  <option value=IDcategorie>Catégorie</option>
+                 <option value=Livres>Livres</option>
+                 <option value=Musique>Musique</option>
+                <option value=Sports&Loisirs>Sports&Loisir</option>
+                 <option value=Vetements>Vêtements</option>
 
-       <?php   }
-    }
-//end if
-//si le BDD n'existe pas
-else {
-    echo "Database not found";
-}//end else
-//fermer la connection
-mysqli_close($db_handle);
-       ?>
-          
-           </div>
-      <!-- /.col-lg-9 --> 
+                </select>
+<hr>
+ <h6 class="text-center"> Caractéristiques</h6>
+
+              <div class="form-label-group">
+                <input type="text" name="Nom" class="form-control" placeholder="Nom" required autofocus>
+                <label for="Nom"></label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="text" name="Description" class="form-control" placeholder="Description" required>
+                <label for="Description"></label>
+              </div>
+
+               <div class="form-label-group">
+                <input type="prix" name="Prix" class="form-control" placeholder="Prix" required>
+                <label for="Prix"></label>
+              </div>
+              
+               <div class="form-label-group">
+                <input type="quantite" name="Quantite" class="form-control" placeholder="Quantite" required>
+                <label for="Quantite"></label>
+              </div>
+              <hr>
+        <h6 class="text-center"> Photo </h6>
+       
+              <div class="form-label-group">
+                <input type="file" name="Photo" class="form-control" placeholder="Photo" required>
+                <label for="Photo"></label>
+              </div>
+
+             
+
+             <hr color="black">
+
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Valider</button>
+              
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
 
 
     </div>
@@ -203,7 +213,7 @@ mysqli_close($db_handle);
 
   </div>
   <!-- /.container -->
-
+ </center>
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
@@ -219,3 +229,10 @@ mysqli_close($db_handle);
 </body>
 
 </html>
+
+
+
+
+
+
+
