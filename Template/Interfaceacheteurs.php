@@ -55,13 +55,13 @@ $db_found = mysqli_select_db($db_handle, $database);
 
             <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 
-              <a class="dropdown-item " href="#"><div class="ba">Livres <ion-icon name="book"></ion-icon></div></a>
+              <a class="dropdown-item " href="Livres.php"><div class="ba">Livres <ion-icon name="book"></ion-icon></div></a>
 
-              <a class="dropdown-item" href="#"><div class="ba">Musiques <ion-icon name="volume-high"></ion-icon></div></a>
+              <a class="dropdown-item" href="Musiques.php"><div class="ba">Musiques <ion-icon name="volume-high"></ion-icon></div></a>
 
-              <a class="dropdown-item" href="#"><div class="ba">Sports et loisirs <ion-icon name="basketball"></ion-icon></div></a>
+              <a class="dropdown-item" href="Sports&Loisirs.php"><div class="ba">Sports et loisirs <ion-icon name="basketball"></ion-icon></div></a>
 
-              <a class="dropdown-item" href="#"><div class="ba">Vetements <ion-icon name="woman"></ion-icon></ion-icon></div></a>
+              <a class="dropdown-item" href="Vetements.php"><div class="ba">Vetements <ion-icon name="woman"></ion-icon></ion-icon></div></a>
               <div class="dropdown-divider"></div>
 
             </div>
@@ -69,13 +69,13 @@ $db_found = mysqli_select_db($db_handle, $database);
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="#"><div class="bar">Top ventes<ion-icon name="bookmark"></ion-icon></div></a>
+            <a class="nav-link" href="Topventes.php"><div class="bar">Top ventes<ion-icon name="bookmark"></ion-icon></div></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#"><div class="bar">Vendre<ion-icon name="briefcase"></ion-icon></div></a>
+            <a class="nav-link" href=""><div class="bar">Vendre<ion-icon name="briefcase"></ion-icon></div></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#"><div class="bar">Votre compte<ion-icon name="person"></ion-icon></div></a>
+            <a class="nav-link" href=""><div class="bar">Votre compte<ion-icon name="person"></ion-icon></div></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#"><div class="bar">Panier<ion-icon name="cart"></ion-icon></div></a>
@@ -118,7 +118,37 @@ if ($db_found)
                   <div class="couleur text-center"><b> <?php echo $data['Nom'] ." " . $data ['Prenom']?></b></div>
                 </center>
               </div>
-     <?php   }
+    
+
+                    <div class="col-lg-12">
+
+        <br><br><br>
+        <hr><div class="titre"><center><b><u>Identifiant</u></b></center></div><hr>
+        <div class="cadre"><center><div class="ecrit"><?php echo $data['Login'] ?></div></center></div>
+
+        <hr><div class="titre"><center><b><u>Coordonnés</u></b></center></div><hr>
+
+        <div class="cadre"><center><div class="ecrit"><?php echo $data['NumTel'] ?></div></center></div>
+        <div class="cadre"><center><div class="ecrit"><?php echo $data['Email'] ?></div></center></div>
+
+        <hr><div class="titre"><center><b><u>Adresse</u></b></center></div><hr>
+
+        <div class="cadre"><center><div class="ecrit"><?php echo $data['Adresse1'] ?></div></center></div>
+         <div class="cadre"><center><div class="ecrit"><?php echo $data['Adresse2'] ?></div></center></div>
+
+        <div class="cadre"><center><div class="ecrit"><?php echo $data['Ville'] ?></div></center></div>
+        <div class="cadre"><center><div class="ecrit"><?php echo $data['CodePostal'] ?></div></center></div>
+        <div class="cadre"><center><div class="ecrit"><?php echo $data['Pays'] ?></div></center></div>
+
+        <hr><div class="titre"><center><b><u>Moyen de paiement</u></b></center></div><hr>
+
+        <div class="cadre"><center><div class="ecrit"><?php echo $data['TypeCarte'] ?></div></center></div>
+        <div class="cadre"><center><div class="ecrit"><?php echo $data['Numero'] ?></div></center></div>
+        <div class="cadre"><center><div class="ecrit"><?php echo $data['DateCarte'] ?></div></center></div>
+        <div class="cadre"><center><div class="ecrit"><?php echo $data['Crypto'] ?></div></center></div>
+
+  </div>
+   <?php   }
         }
 
  else {
@@ -129,34 +159,6 @@ if ($db_found)
            ?>
 
 
-
-                    <div class="col-lg-12">
-
-        <br><br><br>
-        <hr><div class="titre"><center><b><u>Identifiant</u></b></center></div><hr>
-        <div class="cadre"><center><div class="ecrit">Login</div></center></div>
-        <div class="cadre"><center><div class="ecrit">Mot de passe</div></center></div>
-
-        <hr><div class="titre"><center><b><u>Coordonnés</u></b></center></div><hr>
-
-        <div class="cadre"><center><div class="ecrit">Numéro de tel</div></center></div>
-        <div class="cadre"><center><div class="ecrit">E mail</div></center></div>
-
-        <hr><div class="titre"><center><b><u>Adresse</u></b></center></div><hr>
-
-        <div class="cadre"><center><div class="ecrit">Adresse</div></center></div>
-        <div class="cadre"><center><div class="ecrit">Ville</div></center></div>
-        <div class="cadre"><center><div class="ecrit">Code postale</div></center></div>
-        <div class="cadre"><center><div class="ecrit">Pays</div></center></div>
-
-        <hr><div class="titre"><center><b><u>Moyen de paiement</u></b></center></div><hr>
-
-        <div class="cadre"><center><div class="ecrit">Type de carte</div></center></div>
-        <div class="cadre"><center><div class="ecrit">Numéro</div></center></div>
-        <div class="cadre"><center><div class="ecrit">Date</div></center></div>
-        <div class="cadre"><center><div class="ecrit">Crypto</div></center></div>
-
-  </div>
   <!-- /.container -->
 
   <!-- Footer -->
