@@ -96,7 +96,7 @@ $db_found = mysqli_select_db($db_handle, $database);
       <br>
       <div class="card border-0 shadow">
          <div class="card-body text-center">
-          <h5 class="card-title mb-0"><a  style = "text-decoration:none" href="#"> Liste des articles par catégorie</a> </h5>
+          <h5 class="card-title mb-0"><a  style = "text-decoration:none" href="Listearticles.php"> Liste des articles par catégorie</a> </h5>
 
          
         </div>
@@ -129,7 +129,7 @@ $db_found = mysqli_select_db($db_handle, $database);
       <br>
       <div class="card border-0 shadow">
          <div class="card-body text-center">
-             <h5 class="card-title mb-0"><a  style = "text-decoration:none" href="#"> Liste des vendeurs </a> </h5>
+             <h5 class="card-title mb-0"><a  style = "text-decoration:none" href="Listevendeurs.php"> Liste des vendeurs </a> </h5>
         </div>
         <div class="row mx-md-n5">
 
