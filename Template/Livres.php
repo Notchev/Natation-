@@ -69,24 +69,39 @@ $db_found = mysqli_select_db($db_handle, $database);
             <a class="nav-link" href="topventes.php">Top ventes<ion-icon name="bookmark"></ion-icon></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="vendeur_login.php">Vendre<ion-icon name="briefcase"></ion-icon></a>
+            <a class="nav-link" href=  
+            <?php 
+            $user = $_SESSION['Utilisateur'];
+            if ($user == "Vendeur") 
+              { echo "Interfacevendeurs.php" ;} 
+            ?> 
+
+            >Vendre<ion-icon name="briefcase"></ion-icon></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="acheteur_login.php">Votre compte<ion-icon name="person"></ion-icon></a>
+            <a class="nav-link" href= <?php 
+            $user = $_SESSION['Utilisateur'];
+         
+            if ($user == "Acheteur") 
+              { echo "Interfaceacheteurs.php" ;} 
+           
+            ?> >Votre compte acheteur<ion-icon name="person"></ion-icon></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="panier.php">Panier<ion-icon name="cart"></ion-icon></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="admin_login.php">Admin<ion-icon name="school"></ion-icon></a>
+            <a class="nav-link" href=<?php 
+            $user = $_SESSION['Utilisateur'];
+         
+            if ($user == "Admin") 
+              { echo "Interfaceadmin.php" ;} 
+           
+            ?>>Admin<ion-icon name="school"></ion-icon></a>
           </li>
           <li class="nav-item active">
             <img src = <?php  echo $Photo= $_SESSION ['Photo']; ?> height="50" width ="50" >
             <h7>  <?php  echo $Prenom= $_SESSION ['Prenom']; ?> </h7>
-
-     
-  
-    
 
         </ul>
       </div>
@@ -149,7 +164,16 @@ if ($db_found) {
               <img class="d-block img-fluid" src=<?php echo $data[Photo2] ?> alt="Second slide">
             </div>
               </div>
+<?php   }
+    }
+//end if
+//si le BDD n'existe pas
+else {
+    echo "Database not found";
+}//end else
+//fermer la connection
 
+       ?>
     
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -161,16 +185,7 @@ if ($db_found) {
           </a>
         </div>
 
-   <?php   }
-    }
-//end if
-//si le BDD n'existe pas
-else {
-    echo "Database not found";
-}//end else
-//fermer la connection
-mysqli_close($db_handle);
-       ?>
+   
            
         
 
@@ -206,8 +221,18 @@ if ($db_found) {
                 </h4>
                 <h5><?php echo $data[Prix] . €?></h5>
                 <p class="card-text"><?php echo $data[Description] ?></p>
-
+                  <form action="AjouterPanier.php" method="post">
+                <td> <input type= "hidden" name="ID" value= <?php echo $data[ID] ?>> </td>
+                <td> <input type= "hidden" name="IDCategorie" value= <?php echo $data[IDCategorie] ?>> </td>
+                <td> <input  type = "hidden" name="Photo" value= <?php echo $data['Photo'] ?>> </td>
+                <td> <input type = "hidden" name="Prix" value= <?php echo $data[Prix] ?>> </td>
+                <td> <input  type = "hidden" name="QuantiteDispo" value= <?php echo $data[QuantiteDispo] ?>> </td>
+                <td> <input type = "hidden" name="Description" value= <?php echo $data['Description'] ?>> </td>
+                 <td> <input  type = "hidden" name="Nom" value= <?php echo $data['Nom'] ?>> </td>
+                
                 <button class="btn btn-primary" type="submit">Ajouter au Panier</button>
+                </form>
+
               </div>
               
             </div>
