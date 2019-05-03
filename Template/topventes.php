@@ -73,53 +73,59 @@ else {
 
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar  navbar-expand-lg navbar-dark bg-primary fixed-top">
+   <!-- Navigation -->
+  <nav class="navbar  navbar-expand-lg navbar-grey fixed-top">
     <div class="container">
-      <a class="navbar-brand amazon1" href="index.php"> Amazon ECE  
-        <img src="Logo_ECE_Paris.png" width="110" height="30"></a>
+        <h3 class="text-uppercase white mb-0">Amazon'ECE</h3>
+      <!--<a class="navbar-brand amazon1" href="#"><div class="ama"><b>Amazon ECE </b><img src="Logo_ECE_Paris.png" width="100" height="80"></div> 
+      </a>-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
+
              <div class="dropdown">
-              <button class="btn nav-link dropdown-toggle active" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Catégorie<ion-icon name="clipboard"></ion-icon>
+              <button class="btn nav-link dropdown-toggle active" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div class="bar">
+               Catégorie<ion-icon name="clipboard"></ion-icon></div>
 
               </button>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 
-              <a class="dropdown-item" href="Livres.php">Livres <ion-icon name="book"></ion-icon></a>
+              <a class="dropdown-item " href="#"><div class="ba">Livres <ion-icon name="book"></ion-icon></div></a>
 
-              <a class="dropdown-item" href="Musique.php">Musiques <ion-icon name="volume-high"></ion-icon></a>
+              <a class="dropdown-item" href="#"><div class="ba">Musiques <ion-icon name="volume-high"></ion-icon></div></a>
 
-              <a class="dropdown-item" href="Sports&Loisirs.php">Sports et loisirs <ion-icon name="basketball"></ion-icon></a>
+              <a class="dropdown-item" href="#"><div class="ba">Sports et loisirs <ion-icon name="basketball"></ion-icon></div></a>
 
-              <a class="dropdown-item" href="Vetements.php">Vetements <ion-icon name="woman"></ion-icon></ion-icon></a>
+              <a class="dropdown-item" href="#"><div class="ba">Vetements <ion-icon name="woman"></ion-icon></ion-icon></div></a>
+              <div class="dropdown-divider"></div>
 
             </div>
           </div> 
           </li>
 
-         
           <li class="nav-item active">
-            <a class="nav-link" href="topventes.php">Top ventes<ion-icon name="bookmark"></ion-icon></a>
+            <a class="nav-link" href="#"><div class="bar">Top ventes<ion-icon name="bookmark"></ion-icon></div></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="vendeur_login.php">Vendre<ion-icon name="briefcase"></ion-icon></a>
+            <a class="nav-link" href="#"><div class="bar">Vendre<ion-icon name="briefcase"></ion-icon></div></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="acheteur_login.php">Votre compte<ion-icon name="person"></ion-icon></a>
+            <a class="nav-link" href="#"><div class="bar">Votre compte<ion-icon name="person"></ion-icon></div></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="panier.php">Panier<ion-icon name="cart"></ion-icon></a>
+            <a class="nav-link" href="#"><div class="bar">Panier<ion-icon name="cart"></ion-icon></div></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="admin_login.php">Admin<ion-icon name="school"></ion-icon></a>
+            <a class="nav-link" href="#"><div class="bar">Admin<ion-icon name="school"></ion-icon></div></a>
           </li>
+          
+
+
 
 
         </ul>
@@ -203,6 +209,13 @@ mysqli_close($db_handle);
     </div>
   </div>
 </section>
+  <!-- Footer -->
+  <footer class="py-3 navbar-gre">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
 
 </body>
 
