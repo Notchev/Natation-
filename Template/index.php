@@ -6,8 +6,16 @@
   <?php
     session_start();
 
+    if($_SESSION['PanierCategorie'] && $_SESSION['PanierType']){
+      
+    }else{
+      $_SESSION['PanierCategorie']=array();
+      $_SESSION['PanierType']=array();
 
-//identifier le nom de base de données
+    }
+
+
+//identifier le nom de base de données
 $database = "Projet";
 //connectez-vous dans votre BDD
 //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
