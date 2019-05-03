@@ -37,7 +37,7 @@ $db_found = mysqli_select_db($db_handle, $database);
   <!-- Navigation -->
   <nav class="navbar  navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
-      <a class="navbar-brand amazon1" href="#"> Amazon ECE  
+      <a class="navbar-brand amazon1" href="index.php"> Amazon ECE  
         <img src="Logo_ECE_Paris.png" width="90" height="20"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -72,7 +72,7 @@ $db_found = mysqli_select_db($db_handle, $database);
             <a class="nav-link" href="vendeur_login.php">Vendre<ion-icon name="briefcase"></ion-icon></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Votre compte<ion-icon name="person"></ion-icon></a>
+            <a class="nav-link" href="acheteur_login.php">Votre compte<ion-icon name="person"></ion-icon></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="panier.php">Panier<ion-icon name="cart"></ion-icon></a>
