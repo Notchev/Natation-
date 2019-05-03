@@ -3,17 +3,17 @@
 
 <head>
   <?php
-    session_start();
+  session_start();
 
 
 //identifier le nom de base de données
-$database = "Projet";
+  $database = "Projet";
 //connectez-vous dans votre BDD
 //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
-$db_handle = mysqli_connect('localhost', 'root', 'root' );
-$db_found = mysqli_select_db($db_handle, $database);
+  $db_handle = mysqli_connect('localhost', 'root', 'root' );
+  $db_found = mysqli_select_db($db_handle, $database);
 //si le BDD existe, faire le traitement
-?>
+  ?>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,7 +29,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
   <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
-<script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+  <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
 </head>
 
 <body>
@@ -39,19 +39,19 @@ $db_found = mysqli_select_db($db_handle, $database);
     <div class="container">
       <a class="navbar-brand amazon1" href="index.php"> Amazon ECE  
         <img src="Logo_ECE_Paris.png" width="110" height="30"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
              <div class="dropdown">
               <button class="btn nav-link dropdown-toggle active" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                Catégorie<ion-icon name="clipboard"></ion-icon>
 
-              </button>
+             </button>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
               <a class="dropdown-item" href="Livres.php">Livres <ion-icon name="book"></ion-icon></a>
 
@@ -63,45 +63,45 @@ $db_found = mysqli_select_db($db_handle, $database);
 
             </div>
           </div> 
-          </li>
+        </li>
 
-          <li class="nav-item active">
-            <a class="nav-link" href="topventes.php">Top ventes<ion-icon name="bookmark"></ion-icon></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href=  
-            <?php 
-            $user = $_SESSION['Utilisateur'];
-            if ($user == "Vendeur") 
-              { echo "Interfacevendeurs.php" ;} 
-            ?> 
+        <li class="nav-item active">
+          <a class="nav-link" href="topventes.php">Top ventes<ion-icon name="bookmark"></ion-icon></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href=  
+          <?php 
+          $user = $_SESSION['Utilisateur'];
+          if ($user == "Vendeur") 
+            { echo "Interfacevendeurs.php" ;} 
+          ?> 
 
-            >Vendre<ion-icon name="briefcase"></ion-icon></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href= <?php 
-            $user = $_SESSION['Utilisateur'];
-         
-            if ($user == "Acheteur") 
-              { echo "Interfaceacheteurs.php" ;} 
-           
-            ?> >Votre compte acheteur<ion-icon name="person"></ion-icon></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="panier.php">Panier<ion-icon name="cart"></ion-icon></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href=<?php 
-            $user = $_SESSION['Utilisateur'];
-         
-            if ($user == "Admin") 
-              { echo "Interfaceadmin.php" ;} 
-           
-            ?>>Admin<ion-icon name="school"></ion-icon></a>
-          </li>
-          <li class="nav-item active">
-            <img src = <?php  echo $Photo= $_SESSION ['Photo']; ?> height="50" width ="50" >
-            <h7>  <?php  echo $Prenom= $_SESSION ['Prenom']; ?> </h7>
+          >Vendre<ion-icon name="briefcase"></ion-icon></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href= <?php 
+          $user = $_SESSION['Utilisateur'];
+
+          if ($user == "Acheteur") 
+            { echo "Interfaceacheteurs.php" ;} 
+
+          ?> >Votre compte acheteur<ion-icon name="person"></ion-icon></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="panier.php">Panier<ion-icon name="cart"></ion-icon></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href=<?php 
+          $user = $_SESSION['Utilisateur'];
+
+          if ($user == "Admin") 
+            { echo "Interfaceadmin.php" ;} 
+
+          ?>>Admin<ion-icon name="school"></ion-icon></a>
+        </li>
+        <li class="nav-item active">
+          <img src = <?php  echo $Photo= $_SESSION ['Photo']; ?> height="50" width ="50" >
+          <h7>  <?php  echo $Prenom= $_SESSION ['Prenom']; ?> </h7>
 
         </ul>
       </div>
@@ -118,7 +118,7 @@ $db_found = mysqli_select_db($db_handle, $database);
         <h1 class="my-4">Catégories</h1>
         <div class="list-group">
           <br>
-        
+
           <a href="Livres.php" class="list-group-item active">Livres</a>
           <a href="Musique.php" class="list-group-item">Musique</a>
           <a href="Sports&Loisirs.php" class="list-group-item">Sports&Loisirs</a>
@@ -139,141 +139,136 @@ $db_found = mysqli_select_db($db_handle, $database);
           </ol>
 
 
-<?php
-$cat= 1;
+          <?php
+          $cat= 1;
 //identifier le nom de base de données
-$database = "Projet";
+          $database = "Projet";
 //connectez-vous dans votre BDD
 //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
-$db_handle = mysqli_connect('localhost', 'root', 'root' );
-$db_found = mysqli_select_db($db_handle, $database);
+          $db_handle = mysqli_connect('localhost', 'root', 'root' );
+          $db_found = mysqli_select_db($db_handle, $database);
 //si le BDD existe, faire le traitement
 
-if ($db_found) {
+          if ($db_found) {
 
-    $sql = "SELECT * FROM Categorie WHERE ID= $cat";
-    $result = mysqli_query($db_handle, $sql);
-      while ($data = mysqli_fetch_assoc($result)){
-   ?>
+            $sql = "SELECT * FROM Categorie WHERE ID= $cat";
+            $result = mysqli_query($db_handle, $sql);
+            while ($data = mysqli_fetch_assoc($result)){
+             ?>
 
-          <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-              <img class="d-block img-fluid" src=<?php echo $data[Photo] ?> alt="First slide">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block img-fluid" src=<?php echo $data[Photo2] ?> alt="Second slide">
-            </div>
+             <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <img class="d-block img-fluid" src=<?php echo $data[Photo] ?> alt="First slide">
               </div>
-<?php   }
-    }
+              <div class="carousel-item">
+                <img class="d-block img-fluid" src=<?php echo $data[Photo2] ?> alt="Second slide">
+              </div>
+            </div>
+          <?php   }
+        }
 //end if
 //si le BDD n'existe pas
-else {
-    echo "Database not found";
+        else {
+          echo "Database not found";
 }//end else
 //fermer la connection
 
-       ?>
-    
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
+?>
 
-   
-           
-        
-
-        <div class="row">
-
-   
+<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="sr-only">Next</span>
+</a>
+</div>
 
 
 
-<?php
-$cat= 1;
+
+
+<div class="row">
+
+
+
+
+
+  <?php
+  $cat= 1;
 //identifier le nom de base de données
-$database = "Projet";
+  $database = "Projet";
 //connectez-vous dans votre BDD
 //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
-$db_handle = mysqli_connect('localhost', 'root', 'root' );
-$db_found = mysqli_select_db($db_handle, $database);
+  $db_handle = mysqli_connect('localhost', 'root', 'root' );
+  $db_found = mysqli_select_db($db_handle, $database);
 //si le BDD existe, faire le traitement
 
-if ($db_found) {
+  if ($db_found) {
 
     $sql = "SELECT * FROM Type WHERE IDCategorie= $cat";
     $result = mysqli_query($db_handle, $sql);
 
     while ($data = mysqli_fetch_assoc($result)){ ?>
 
-  <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src=<?php echo $data[Photo] ?> alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#"><?php echo $data[Nom] ?></a>
-                </h4>
-                <h5><?php echo $data[Prix] . €?></h5>
-                <p class="card-text"><?php echo $data[Description] ?></p>
-                  <form action="AjouterPanier.php" method="post">
-                <td> <input type= "hidden" name="ID" value= <?php echo $data[ID] ?>> </td>
-                <td> <input type= "hidden" name="IDCategorie" value= <?php echo $data[IDCategorie] ?>> </td>
-                <td> <input  type = "hidden" name="Photo" value= <?php echo $data['Photo'] ?>> </td>
-                <td> <input type = "hidden" name="Prix" value= <?php echo $data[Prix] ?>> </td>
-                <td> <input  type = "hidden" name="QuantiteDispo" value= <?php echo $data[QuantiteDispo] ?>> </td>
-                <td> <input type = "hidden" name="Description" value= <?php echo $data['Description'] ?>> </td>
-                 <td> <input  type = "hidden" name="Nom" value= <?php echo $data['Nom'] ?>> </td>
-                
-                <button class="btn btn-primary" type="submit">Ajouter au Panier</button>
-                </form>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src=<?php echo $data[Photo] ?> alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#"><?php echo $data[Nom] ?></a>
+            </h4>
+            <h5><?php echo $data[Prix]."€" ?></h5>
+            <p class="card-text"><?php echo $data[Description] ?></p>
+            <form action="AjouterPanier.php" method="post">
+              <td> <input type= "hidden" name="ID" value= <?php echo $data[ID] ?>> </td>
+              <td> <input type= "hidden" name="IDCategorie" value= <?php echo $data[IDCategorie] ?>> </td>
 
-              </div>
-              
-            </div>
+              <button class="btn btn-primary" type="submit">Ajouter au Panier</button>
+            </form>
+
           </div>
 
-      <?php   }
-    }
+        </div>
+      </div>
+
+    <?php   }
+  }
 //end if
 //si le BDD n'existe pas
-else {
+  else {
     echo "Database not found";
 }//end else
 //fermer la connection
 mysqli_close($db_handle);
-       ?>
-        
+?>
 
 
-        </div>
-        <!-- /.row -->
 
-      </div>
-      <!-- /.col-lg-9 -->
+</div>
+<!-- /.row -->
 
-    </div>
-    <!-- /.row -->
+</div>
+<!-- /.col-lg-9 -->
 
+</div>
+<!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
   </div>
   <!-- /.container -->
+</footer>
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
