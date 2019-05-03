@@ -180,10 +180,13 @@
                     <h4 class="card-title">
                       <?php echo $data[Nom] ?>
                     </h4>
-                    <form action="#" method="post">
+                    <form action="AjouterPanier.php" method="post">
                       <table>
                       
-                  <td> <input type="hidden" name="IDArticlechoisi" value= <?php echo $data[ID] ?>> </td>
+                  <td> <input type="hidden" name="ID" value= <?php echo $IDArticlechoisi ?>> </td>
+                   <td> <input type="hidden" name="CouleurChoisi" value= <?php echo $data['Couleur'] ?>> </td>
+                   <td> <input type="hidden" name="GenreChoisi" value= <?php echo $Genre ?>> </td>
+                   <td> <input type="hidden" name="IDCategorie" value= 4 > </td>
                   <tr> <select name="taille">
     <?php
      //declaration des variables
