@@ -40,7 +40,7 @@ if ($db_found) {
   <!-- Navigation -->
   <nav class="navbar  navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
-      <a class="navbar-brand amazon1" href="#"> Amazon ECE  
+      <a class="navbar-brand amazon1" href="index.php"> Amazon ECE  
         <img src="Logo_ECE_Paris.png" width="110" height="30"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
