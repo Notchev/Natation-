@@ -107,6 +107,7 @@
               $sql = "SELECT * FROM Type WHERE ID = '$id' GROUP BY ID";
               $result = mysqli_query($db_handle, $sql);
               $data =  mysqli_fetch_assoc($result);
+
             if($_SESSION['PanierCategorie'][$i]!=4){
 
             ?>
@@ -152,6 +153,12 @@
 
             else{
 
+$idarticle= $_SESSION['PanierArticle'][$i];
+
+$sql= "SELECT * FROM ArticleVetement WHERE ID= $idarticle";
+
+$result = mysqli_query ($db_handle, $sql);
+$data3 = mysqli_fetch_assoc($result);
 
 
             ?>
@@ -160,7 +167,7 @@
               <div class="col-md-7">
                   <center>
 
-                <a href="#"><img class="img-fluid rounded mb-7 mb-md-0" src=<?php echo $data['Photo']?> alt="">
+                <a href="#"><img class="img-fluid rounded mb-7 mb-md-0" src=<?php echo $data3['Photo'];  ?> alt="">
                 </a>
               </center>
               </div>
@@ -172,14 +179,8 @@
                 </div>
           
                 <select name= "choixquantite" value= "Sélectionner la quantite"> 
-                <?php 
-
-              for ($j=1; $j<=$data['QuantiteDispo']; $j++)
-              {
-         ?>
-                <option value = <?php echo $j ?> > <?php echo $j ?> </option> 
-
-                <?php } ?>
+                
+                <option value = 1 > 1 </option> 
 
        
       </select>
