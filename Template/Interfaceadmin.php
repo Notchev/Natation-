@@ -53,13 +53,13 @@ $db_found = mysqli_select_db($db_handle, $database);
 
             <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 
-              <a class="dropdown-item " href="#"><div class="ba">Livres <ion-icon name="book"></ion-icon></div></a>
+              <a class="dropdown-item " href="Livres.php"><div class="ba">Livres <ion-icon name="book"></ion-icon></div></a>
 
-              <a class="dropdown-item" href="#"><div class="ba">Musiques <ion-icon name="volume-high"></ion-icon></div></a>
+              <a class="dropdown-item" href="Musique.php"><div class="ba">Musiques <ion-icon name="volume-high"></ion-icon></div></a>
 
-              <a class="dropdown-item" href="#"><div class="ba">Sports et loisirs <ion-icon name="basketball"></ion-icon></div></a>
+              <a class="dropdown-item" href="Sports&Loisirs.php"><div class="ba">Sports et loisirs <ion-icon name="basketball"></ion-icon></div></a>
 
-              <a class="dropdown-item" href="#"><div class="ba">Vetements <ion-icon name="woman"></ion-icon></ion-icon></div></a>
+              <a class="dropdown-item" href="etements.php"><div class="ba">Vetements <ion-icon name="woman"></ion-icon></ion-icon></div></a>
               <div class="dropdown-divider"></div>
 
             </div>
@@ -67,22 +67,69 @@ $db_found = mysqli_select_db($db_handle, $database);
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="#"><div class="bar">Top ventes<ion-icon name="bookmark"></ion-icon></div></a>
+            <a class="nav-link" href="topventes.php"><div class="bar">Top ventes<ion-icon name="bookmark"></ion-icon></div></a>
+          </li>
+
+           <li class="nav-item active">
+            <a class="nav-link" href=  
+            <?php 
+            $user = $_SESSION['Utilisateur'];
+            if ($user == "Vendeur") 
+              { echo "Interfacevendeurs.php" ;} 
+             else 
+              { echo "vendeur_login.php" ;} 
+            ?> 
+
+            ><div class="bar">Vendre<ion-icon name="briefcase"></ion-icon></div></a>
+          </li>
+
+
+
+          <li class="nav-item active">
+            <a class="nav-link" href= <?php 
+           
+         
+            if ($user == "Acheteur") 
+              { echo "Interfaceacheteurs.php" ;} 
+            else 
+              { echo "acheteur_login.php" ;} 
+           
+            ?> ><div class="bar">Votre compte acheteur<ion-icon name="person"></ion-icon></div></a>
+          </li>
+         
+         <li class="nav-item active">
+            <a class="nav-link" href="panier.php"><div class="bar">Panier<ion-icon name="cart"></ion-icon></div></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#"><div class="bar">Vendre<ion-icon name="briefcase"></ion-icon></div></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><div class="bar">Votre compte<ion-icon name="person"></ion-icon></div></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><div class="bar">Panier<ion-icon name="cart"></ion-icon></div></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><div class="bar">Admin<ion-icon name="school"></ion-icon></div></a>
+            <a class="nav-link" href=<?php 
+            
+         
+            if ($user == "Admin") 
+              { echo "Interfaceadmin.php" ;} 
+             else
+              { echo "admin_login.php" ;} 
+           
+            ?>><div class="bar">Admin<ion-icon name="school"></ion-icon></div></a>
           </li>
           
 
+
+         
+   
+
+            <div class=pull-right>
+                  <li class="nav-item active bar float :right  ">
+              <img src = <?php  echo $Photo= $_SESSION ['Photo']; ?> class="arr"  >
+                          <h7>  <?php  echo $Prenom= $_SESSION ['Prenom']; ?> </h7>
+
+            </div>
+         
+
+          </li> 
+
+
+
+        </div>
 
 
 
