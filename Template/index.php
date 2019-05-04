@@ -6,14 +6,16 @@
   <?php
     session_start();
 
-    if($_SESSION['PanierCategorie'] && $_SESSION['PanierType'] && $_SESSION['PanierArticle']){
+    if($_SESSION['PanierCategorie'] && $_SESSION['PanierType'] && $_SESSION['PanierArticle'] && $_SESSION['PrixPanier']){
       $_SESSION['PanierCategorie']=array();
       $_SESSION['PanierType']=array();
       $_SESSION['PanierArticle']=array();
+       $_SESSION['PrixPanier']=0;
     }else{
       $_SESSION['PanierCategorie']=array();
       $_SESSION['PanierType']=array();
       $_SESSION['PanierArticle']=array();
+       $_SESSION['PrixPanier']=0;
 
     }
 
