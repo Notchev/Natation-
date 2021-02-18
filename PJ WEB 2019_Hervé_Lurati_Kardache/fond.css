@@ -1,0 +1,47 @@
+body {
+  background: url('fond.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+  .profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+
+
+.arrondie {
+    overflow:hidden;
+    -webkit-border-radius:100px;
+    -moz-border-radius:100px;
+    border-radius:100px;
+    width:180px;
+    height:180px;
+ 
+}
+
+.couleur
+{
+
+	font-size: 50px !important;
+    letter-spacing: 4px;
+    color: #696969;
+    font-weight: lighter ;
+}
+
+.couleur1
+{
+
+	font-size: 20px !important;
+    letter-spacing: 4px;
+    color: #696969;
+    font-weight: lighter ;
+}
